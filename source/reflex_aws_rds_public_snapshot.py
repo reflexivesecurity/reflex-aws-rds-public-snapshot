@@ -15,7 +15,7 @@ class RDSPublicSnapshot(AWSRule):
 
     def extract_event_data(self, event):
         """ Extract required event data """
-        self.snapshot_id = event["detail"]["requestParameters"]["dbSnapshotIdentifier"]
+        self.snapshot_id = event["detail"]["requestParameters"]["dBSnapshotIdentifier"]
         self.request_params = event["detail"]["requestParameters"]
 
     def resource_compliant(self):
@@ -24,7 +24,6 @@ class RDSPublicSnapshot(AWSRule):
 
         Return True if it is compliant, and False if it is not.
         """
-        # TODO: Implement a check for determining if the resource is compliant
         if self.request_params["attributeName"] == "restore":
             if "all" in self.request_params["valuesToAdd"]:
                 return False
