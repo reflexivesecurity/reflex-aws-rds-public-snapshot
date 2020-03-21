@@ -1,0 +1,55 @@
+{
+    "version": "0",
+    "id": "12942edf-aa9d-b8bd-a3e4-e6e7f625a456",
+    "detail-type": "AWS API Call via CloudTrail",
+    "source": "aws.rds",
+    "account": "000000000000",
+    "time": "2020-03-19T01:37:23Z",
+    "region": "us-east-1",
+    "resources": [],
+    "detail": {
+        "eventVersion": "1.05",
+        "userIdentity": {
+            "type": "IAMUser",
+            "principalId": "AIDAFFFFFFFFFFFFFFFFF",
+            "arn": "arn:aws:iam::000000000000:user/example.user",
+            "accountId": "000000000000",
+            "accessKeyId": "ASIAFFFFFFFFFFFFFFFF",
+            "userName": "example.user",
+            "sessionContext": {
+                "attributes": {
+                    "mfaAuthenticated": "true",
+                    "creationDate": "2020-03-18T22:24:53Z"
+                }
+            },
+            "invokedBy": "signin.amazonaws.com"
+        },
+        "eventTime": "2020-03-19T01:37:23Z",
+        "eventSource": "rds.amazonaws.com",
+        "eventName": "ModifyDBSnapshotAttribute",
+        "awsRegion": "us-east-1",
+        "sourceIPAddress": "127.0.0.1",
+        "userAgent": "signin.amazonaws.com",
+        "requestParameters": {
+            "dBSnapshotIdentifier": "test-db-1",
+            "attributeName": "restore",
+            "valuesToAdd": [
+                "all"
+            ]
+        },
+        "responseElements": {
+            "dBSnapshotIdentifier": "test-db-1",
+            "dBSnapshotAttributes": [
+                {
+                    "attributeName": "restore",
+                    "attributeValues": [
+                        "all"
+                    ]
+                }
+            ]
+        },
+        "requestID": "7b85160e-10b2-4b5f-b933-88a7f2d3c437",
+        "eventID": "811e7087-206d-4f2c-aae7-7d8e770103a2",
+        "eventType": "AwsApiCall"
+    }
+}
