@@ -29,9 +29,23 @@ class RDSPublicSnapshot(AWSRule):
                 return False
         return True
 
+    def remediate(self):
+        """ Fix the non-compliant resource """
+        self.set_snapshot_private()
+
+    def set_snapshot_private(self):
+        self.client.modify_db_snapshot_attribute(
+            DBSnapshotIdentifier=self.snapshot_id,
+            AttributeName="restore",
+            ValuesToRemove=["all"],
+        )
+
     def get_remediation_message(self):
         """ Returns a message about the remediation action that occurred """
-        return f"The RDS snapshot {self.snapshot_id} was shared with the public."
+        message = f"The RDS snapshot {self.snapshot_id} was shared with the public."
+        if self.should_remediate():
+            message += " Snapshot has been made private again."
+        return message
 
 
 def lambda_handler(event, _):
